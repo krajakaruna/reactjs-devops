@@ -16,11 +16,12 @@ jobs:
 
 workflows:
   herokou_deploy:
+    jobs:
     - build
     - heroku/deploy-via-git:
-      app-name: $HEROKU_APP_NAME
-      requires: 
-        - build
-      filters:
-        branches:
-          only: main
+        app-name: $HEROKU_APP_NAME
+        requires: 
+            - build
+        filters: 
+            branches: 
+                only: develop
