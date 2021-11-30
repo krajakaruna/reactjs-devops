@@ -13,14 +13,14 @@ jobs:
       - run:
           name: Install Dependancies
           command: npm install
-  heroku/deploy-via-git:
-    requires:
-     - build
-    filters:
-      branches:
-        only: main
 
 workflows:
   herokou_deploy:
     - build
-    - heroku/deploy-via-git
+    - heroku/deploy-via-git:
+      app-name: $HEROKU_APP_NAME
+      requires: 
+        - build
+      filters:
+        branches:
+          only: main
