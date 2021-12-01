@@ -25,7 +25,10 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Setup 
+          name: Setup heroku 
+          command: heroku git:remote -a kavi-reactjs
+      - run:
+          name: Deploy the app
           command: git push heroku main
 
 workflows:
