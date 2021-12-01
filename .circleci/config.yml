@@ -18,19 +18,6 @@ jobs:
           command: npm run build
 
 
-  # deploy:
-  #   machine: 
-  #     enabled: true
-  #   working_directory: ~/rep
-  #   steps:
-  #     - checkout
-  #     - run:
-  #         name: Setup heroku 
-  #         command: heroku git:remote -a kavi-reactjs
-  #     - run:
-  #         name: Deploy the app
-  #         command: git push heroku main
-
 workflows:
   heroku_deploy:
     jobs:
