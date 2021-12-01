@@ -17,14 +17,25 @@ jobs:
           name: Build
           command: npm run build
 
+
+  deploy:
+    machine: 
+      enabled: true
+    working_directory: ~/rep
+    steps:
+      - checkout
+      - run:
+          name: Setup 
+          command: git push heroku main:main
+
 workflows:
   heroku_deploy:
     jobs:
     - build
-    - heroku/deploy-via-git:
-        app-name: $HEROKU_APP_NAME
-        requires: 
-            - build
-        filters: 
-            branches: 
-                only: develop
+    - deploy:
+        requires:
+          - build
+        filters:
+          branches:
+            only: main
+
